@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
-import vue from 'vite-plugin-vue2'
+import { createVuePlugin } from 'vite-plugin-vue2'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [createVuePlugin()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
