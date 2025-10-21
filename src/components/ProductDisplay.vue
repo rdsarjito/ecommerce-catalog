@@ -34,21 +34,32 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import { fetchProductById, type Product } from '@/services/api'
 
-export default {
+type State = {
+  currentId: number
+  product: Product | null
+  isLoading: boolean
+  error: string | null
+  cache: Map<number, Product>
+}
+
+type Ctx = State & { loadProduct(id: number): Promise<void> }
+
+export default Vue.extend({
   name: 'ProductDisplay',
-  data() {
+  data(): State {
     return {
       currentId: 1,
-      product: null as Product | null,
+      product: null,
       isLoading: false,
-      error: null as string | null,
+      error: null,
       cache: new Map<number, Product>()
     }
   },
   computed: {
-    pageClass(): string {
+    pageClass(this: State): string {
       if (!this.product) return 'page-unavailable'
       const cat = this.product.category
       if (cat === "men's clothing") return 'page-men'
@@ -57,7 +68,7 @@ export default {
     }
   },
   methods: {
-    async loadProduct(id: number) {
+    async loadProduct(this: State, id: number) {
       this.isLoading = true
       this.error = null
       try {
@@ -76,7 +87,7 @@ export default {
         this.isLoading = false
       }
     },
-    nextProduct(): void {
+    nextProduct(this: Ctx): void {
       if (this.isLoading) return
       this.currentId = this.currentId % 20 + 1
       this.loadProduct(this.currentId)
@@ -85,7 +96,7 @@ export default {
   mounted() {
     // Sesuai hint: fetch hanya saat tombol Next Product ditekan
   }
-}
+})
 </script>
 
 <style scoped>
