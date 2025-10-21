@@ -1,5 +1,38 @@
-/* Global styles for the app */
+/* Global styles and color palette */
+:root {
+  --brand-blue: #002772;
+  --brand-purple: #720060;
+  --men-bg: #D6E6FF;
+  --women-bg: #FDE2FF;
+  --unavailable-bg: #F5F5F5;
+  --ink: #1E1E1E;
+  --ink-2: #3F3F3F;
+  --muted: #DCDCDC;
+  --white: #FFFFFF;
+}
+
 body {
   margin: 0;
   background: #fafafa;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial,
+    sans-serif;
 }
+
+.page-men { background: var(--men-bg); min-height: 100vh; padding: 32px 16px; }
+.page-women { background: var(--women-bg); min-height: 100vh; padding: 32px 16px; }
+.page-unavailable { background: var(--unavailable-bg); min-height: 100vh; padding: 32px 16px; }
+
+.card { max-width: 920px; margin: 0 auto; background: var(--white); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.06); padding: 24px; }
+.card h3 { color: var(--ink); margin: 8px 0; }
+.card p { color: var(--ink-2); line-height: 1.4; }
+
+.actions { display: flex; gap: 12px; margin-top: 16px; }
+.btn { padding: 10px 16px; border-radius: 6px; border: 1px solid var(--brand-blue); background: var(--brand-blue); color: var(--white); cursor: pointer; }
+.btn.secondary { background: var(--white); color: var(--brand-blue); }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Loader */
+.loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--brand-blue); border-radius: 50%; width: 36px; height: 36px; animation: spin 1s linear infinite; margin: 24px auto; }
+@keyframes spin { 0% { transform: rotate(0) } 100% { transform: rotate(360deg) } }
