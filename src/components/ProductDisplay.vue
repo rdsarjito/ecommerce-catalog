@@ -33,22 +33,22 @@
   </section>
 </template>
 
-<script>
-import { fetchProductById } from '@/services/api'
+<script lang="ts">
+import { fetchProductById, type Product } from '@/services/api'
 
 export default {
   name: 'ProductDisplay',
   data() {
     return {
       currentId: 1,
-      product: null,
+      product: null as Product | null,
       isLoading: false,
-      error: null,
-      cache: new Map()
+      error: null as string | null,
+      cache: new Map<number, Product>()
     }
   },
   computed: {
-    pageClass() {
+    pageClass(): string {
       if (!this.product) return 'page-unavailable'
       const cat = this.product.category
       if (cat === "men's clothing") return 'page-men'
@@ -57,11 +57,12 @@ export default {
     }
   },
   methods: {
-    async loadProduct(id) {
+    async loadProduct(id: number) {
       this.isLoading = true
       this.error = null
       try {
-        const data = this.cache.get(id) || await fetchProductById(id)
+        const cached = this.cache.get(id)
+        const data = cached ? cached : await fetchProductById(id)
         this.cache.set(id, data)
         const cat = data.category
         if (cat === "men's clothing" || cat === "women's clothing") {
@@ -69,13 +70,13 @@ export default {
         } else {
           this.product = null
         }
-      } catch (e) {
+      } catch (e: unknown) {
         this.error = 'Gagal memuat produk'
       } finally {
         this.isLoading = false
       }
     },
-    nextProduct() {
+    nextProduct(): void {
       if (this.isLoading) return
       this.currentId = this.currentId % 20 + 1
       this.loadProduct(this.currentId)

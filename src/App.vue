@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import ProductDisplay from './components/ProductDisplay.vue'
 
 export default {
