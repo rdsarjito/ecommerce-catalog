@@ -35,66 +35,23 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { fetchProductById, type Product } from '@/services/api'
-
-type State = {
-  currentId: number
-  product: Product | null
-  isLoading: boolean
-  error: string | null
-  cache: Map<number, Product>
-}
-
-type Ctx = State & { loadProduct(id: number): Promise<void> }
+import { useProductStore } from '@/stores/product'
+import { mapState, mapGetters, mapActions } from 'pinia'
 
 export default Vue.extend({
   name: 'ProductDisplay',
-  data(): State {
-    return {
-      currentId: 1,
-      product: null,
-      isLoading: false,
-      error: null,
-      cache: new Map<number, Product>()
-    }
+  computed: {
+    ...mapState(useProductStore, ['currentId', 'product', 'isLoading', 'error']),
+    ...mapGetters(useProductStore, ['pageClass'])
   },
   computed: {
-    pageClass(this: State): string {
-      if (!this.product) return 'page-unavailable'
-      const cat = this.product.category
-      if (cat === "men's clothing") return 'page-men'
-      if (cat === "women's clothing") return 'page-women'
-      return 'page-unavailable'
-    }
+    
   },
   methods: {
-    async loadProduct(this: State, id: number) {
-      this.isLoading = true
-      this.error = null
-      try {
-        const cached = this.cache.get(id)
-        const data = cached ? cached : await fetchProductById(id)
-        this.cache.set(id, data)
-        const cat = data.category
-        if (cat === "men's clothing" || cat === "women's clothing") {
-          this.product = data
-        } else {
-          this.product = null
-        }
-      } catch (e: unknown) {
-        this.error = 'Gagal memuat produk'
-      } finally {
-        this.isLoading = false
-      }
-    },
-    nextProduct(this: Ctx): void {
-      if (this.isLoading) return
-      this.currentId = this.currentId % 20 + 1
-      this.loadProduct(this.currentId)
-    }
+    ...mapActions(useProductStore, ['loadProduct', 'nextProduct'])
   },
   mounted() {
-    // Sesuai hint: fetch hanya saat tombol Next Product ditekan
+    // no-op on mount; fetch happens on Next button
   }
 })
 </script>
