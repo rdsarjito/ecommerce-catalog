@@ -9,5 +9,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src')
     }
   },
-  server: { port: 5173, open: false }
+  server: { port: 5173, open: false },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: ['/src/tests/setup.ts']
+  }
 })
