@@ -1,1 +1,1 @@
-import '@testing-library/jest-dom'
+// Vitest setup for jsdom (kept minimal)
