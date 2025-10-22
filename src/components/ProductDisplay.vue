@@ -101,7 +101,7 @@ export default Vue.extend({
   methods: {
     ...mapActions(useProductStore, ['loadProduct', 'nextProduct'])
   },
-  mounted() {}
+  mounted() { this.loadProduct(1) }
 })
 </script>
 
