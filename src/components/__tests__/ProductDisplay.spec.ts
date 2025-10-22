@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { mount, createLocalVue } from '@vue/test-utils'
 import Vue from 'vue'
 import { PiniaVuePlugin, createPinia } from 'pinia'

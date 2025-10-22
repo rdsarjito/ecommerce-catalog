@@ -15,24 +15,89 @@ body {
   margin: 0;
   background: #fafafa;
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial,
-    sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.page-men { background: var(--men-bg); min-height: 100vh; padding: 32px 16px; }
-.page-women { background: var(--women-bg); min-height: 100vh; padding: 32px 16px; }
-.page-unavailable { background: var(--unavailable-bg); min-height: 100vh; padding: 32px 16px; }
+.page-men { 
+  background-color: var(--men-bg); 
+  background-image: url('../bg-pattern.png');
+  background-repeat: repeat; 
+  background-size: 360px auto; 
+  min-height: 100vh; padding: 32px 16px; 
+}
+.page-women { 
+  background-color: var(--women-bg); 
+  background-image: url('../bg-pattern.png');
+  background-repeat: repeat; 
+  background-size: 360px auto; 
+  min-height: 100vh; padding: 32px 16px; 
+}
+.page-unavailable { 
+  background-color: var(--unavailable-bg); 
+  background-image: url('../bg-pattern.png');
+  background-repeat: repeat; 
+  background-size: 360px auto; 
+  min-height: 100vh; padding: 32px 16px; 
+}
 
-.card { max-width: 920px; margin: 0 auto; background: var(--white); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.06); padding: 24px; }
-.card h3 { color: var(--ink); margin: 8px 0; }
-.card p { color: var(--ink-2); line-height: 1.4; }
+.card { width: 100%; max-width: 1034px; height: auto; margin: 123px auto 48px; background: var(--white); border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,.08); padding: 32px 36px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.card h2, .card h3 { color: var(--brand-blue); margin: 6px 0 10px; font-weight: 800; letter-spacing: .2px; }
+.card h2.title { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 28px; line-height: 1; letter-spacing: 0; }
+.page-women .card h2, .page-women .card h3 { color: var(--brand-purple); }
+.card p { color: var(--ink-2); line-height: 1.5; }
+.product-info p { color: var(--ink); }
 
-.actions { display: flex; gap: 12px; margin-top: 16px; }
-.btn { padding: 10px 16px; border-radius: 6px; border: 1px solid var(--brand-blue); background: var(--brand-blue); color: var(--white); cursor: pointer; }
-.btn.secondary { background: var(--white); color: var(--brand-blue); }
+/* Product layout */
+.product-layout { display: flex; gap: 12px; align-items: center; justify-content: center; }
+.product-image { width: 400px; height: 400px; object-fit: contain; }
+.product-info { flex: 0 0 548px; max-width: 548px; min-height: 484px; min-width: 0; }
+.meta { display: flex; justify-content: space-between; align-items: center; margin: 2px 0 10px; color: var(--ink-2); }
+.category { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; font-size: 18px; line-height: 1; letter-spacing: 0; color: var(--ink-2); text-transform: none; }
+.rule { height: 2px; background: var(--muted); opacity: .8; width: 100%; margin: 8px 0 12px; }
+.rating { display: inline-flex; align-items: center; gap: 8px; }
+.rating-dots { display: inline-flex; gap: 4px; }
+.dot { width: 18px; height: 18px; border-radius: 50%; background: var(--white); border: 2px solid var(--brand-blue); display: inline-block; }
+.dot.filled { background: var(--brand-blue); border-color: var(--brand-blue); }
+.page-women .dot { border-color: var(--brand-purple); }
+.page-women .dot.filled { background: var(--brand-purple); border-color: var(--brand-purple); }
+
+.divider { height: 2px; background: var(--muted); opacity: .9; margin: 20px 0 24px; }
+
+.price-row { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.price { font-size: 28px; font-weight: 800; color: var(--brand-blue); letter-spacing: .3px; }
+.page-women .price { color: var(--brand-purple); }
+
+.actions { display: flex; gap: 16px; margin-top: 16px; width: 100%; flex-direction: row; }
+.actions .btn { width: 50%; min-width: 0; }
+.btn { padding: 12px 20px; border-radius: 4px; border: 2px solid var(--brand-blue); background: var(--brand-blue); color: var(--white); cursor: pointer; min-width: 160px; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 20px; line-height: 1; letter-spacing: 0; }
+.btn.secondary { background: var(--white); color: var(--brand-blue); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 20px; line-height: 1; letter-spacing: 0; border-width: 3px; }
+.page-women .btn { border-color: var(--brand-purple); background: var(--brand-purple); }
+.page-women .btn.secondary { background: var(--white); color: var(--brand-purple); }
+
+@media (max-width: 1024px) {
+  .product-layout { flex-direction: column; }
+  .product-image { width: 100%; height: auto; max-height: 420px; }
+  .price-row { flex-direction: column; align-items: flex-start; }
+}
 .btn:disabled { opacity: .6; cursor: not-allowed; }
 
 /* Loader */
 .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--brand-blue); border-radius: 50%; width: 36px; height: 36px; animation: spin 1s linear infinite; margin: 24px auto; }
 @keyframes spin { 0% { transform: rotate(0) } 100% { transform: rotate(360deg) } }
+
+/* Additional responsive rules */
+@media (max-width: 1200px) {
+  .card { width: auto; max-width: 100%; height: auto; margin: 24px 16px; padding: 20px; display: block; }
+  .product-layout { gap: 28px; }
+  .product-info { flex: 1 1 auto; max-width: 100%; min-height: auto; }
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 22px; }
+  .category { font-size: 14px; }
+  .dot { width: 14px; height: 14px; }
+  .price-row { flex-direction: column; align-items: stretch; gap: 12px; }
+  .actions { flex-direction: column; }
+  .btn { width: 100%; }
+}
