@@ -92,7 +92,7 @@ export default Vue.extend({
   height: 1px;
   background-color: #e0e0e0;
   width: 100%;
-  align-self: stretch;
+  align-self: stretch; /* fit column width only */
 }
 .rule { margin: -12px 0 12px 0; }
 .divider { margin: 0 0; }
@@ -129,10 +129,10 @@ export default Vue.extend({
   margin: 0;
 }
 
-.page-unavailable .actions { justify-content: center; }
+.page-unavailable .actions { justify-content: center; width: 100%; }
 .page-unavailable .actions .btn.secondary {
-  width: 465px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 50%;
   height: 42px;
   border-radius: 4px;
   border-width: 3px;
@@ -148,6 +148,9 @@ export default Vue.extend({
   font-size: 20px;
   line-height: 1;
   letter-spacing: 0;
+}
+@media (max-width: 768px) {
+  .page-unavailable .actions .btn.secondary { max-width: 100%; }
 }
 
 .page-unavailable .card > div {
@@ -186,3 +189,4 @@ export default Vue.extend({
 }
 
 </style>
+55%
