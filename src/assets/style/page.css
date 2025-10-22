@@ -65,7 +65,7 @@ body {
 .divider { height: 2px; background: var(--muted); opacity: .9; margin: 20px 0 24px; }
 
 .price-row { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
-.price { font-size: 28px; font-weight: 800; color: var(--brand-blue); letter-spacing: .3px; }
+.price { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 28px; line-height: 1; letter-spacing: 0; color: var(--brand-blue); }
 .page-women .price { color: var(--brand-purple); }
 
 .actions { display: flex; gap: 16px; margin-top: 16px; width: 100%; flex-direction: row; }

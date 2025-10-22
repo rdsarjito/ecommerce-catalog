@@ -30,13 +30,14 @@
               <div class="meta">
                 <span class="category">{{ product.category }}</span>
                 <span class="rating">
-                  4.1/5
+                  {{ ratingText }}
                   <span class="rating-dots">
-                    <span class="dot filled"></span>
-                    <span class="dot filled"></span>
-                    <span class="dot filled"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <span
+                      v-for="n in 5"
+                      :key="`dot-${n}`"
+                      class="dot"
+                      :class="{ filled: n <= ratingValue }"
+                    ></span>
                   </span>
                 </span>
               </div>
@@ -84,6 +85,18 @@ export default Vue.extend({
   computed: {
     ...mapState(useProductStore, ['currentId', 'product', 'isLoading', 'error']),
     ...mapGetters(useProductStore, ['pageClass'])
+    ,
+    ratingValue(): number {
+      if (!this.product || !this.product.rating) return 0
+      const rate = typeof this.product.rating === 'object' ? (this.product.rating as any).rate : (this.product as any).rating
+      return Math.round(Number(rate) || 0)
+    },
+    ratingText(): string {
+      if (!this.product || !this.product.rating) return '0/5'
+      const rate = typeof this.product.rating === 'object' ? (this.product.rating as any).rate : (this.product as any).rating
+      const num = Number(rate) || 0
+      return `${num.toFixed(1)}/5`
+    }
   },
   methods: {
     ...mapActions(useProductStore, ['loadProduct', 'nextProduct'])
@@ -104,6 +117,12 @@ export default Vue.extend({
   margin: 0;
   max-height: 240px;
   overflow-y: auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 .rule,
