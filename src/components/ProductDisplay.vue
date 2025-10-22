@@ -1,7 +1,26 @@
 <template>
   <section :class="pageClass" aria-live="polite">
     <div class="card">
-      <div v-if="isLoading" class="loader"></div>
+      <div v-if="isLoading" class="skeleton" aria-busy="true" aria-live="polite">
+        <div class="product-layout">
+          <div class="product-image skeleton-block"></div>
+          <div class="product-info skeleton-info">
+            <div class="skeleton-line skeleton-title"></div>
+            <div class="skeleton-line skeleton-meta" style="width: 40%"></div>
+            <div class="rule skeleton-rule"></div>
+            <div class="skeleton-line" style="width: 95%"></div>
+            <div class="skeleton-line" style="width: 90%"></div>
+            <div class="skeleton-line" style="width: 92%"></div>
+            <div class="skeleton-line" style="width: 70%"></div>
+            <div class="divider skeleton-divider"></div>
+            <div class="skeleton-line skeleton-price"></div>
+            <div class="actions">
+              <div class="skeleton-btn"></div>
+              <div class="skeleton-btn outline"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <template v-else>
         <template v-if="product">
           <div class="product-layout">
@@ -111,6 +130,21 @@ export default Vue.extend({
 .actions .btn {
   flex: 1 1 0;
 }
+
+/* Skeleton loading */
+.skeleton-block { background: linear-gradient(90deg, #eee 25%, #f5f5f5 37%, #eee 63%); background-size: 400% 100%; animation: shimmer 1.4s ease infinite; border-radius: 8px; }
+.skeleton-info { display: flex; flex-direction: column; gap: 12px; }
+.skeleton-line { height: 16px; border-radius: 6px; background: linear-gradient(90deg, #eee 25%, #f5f5f5 37%, #eee 63%); background-size: 400% 100%; animation: shimmer 1.4s ease infinite; }
+.skeleton-title { height: 24px; width: 70%; }
+.skeleton-meta { height: 14px; }
+.skeleton-rule { height: 1px; background: #e0e0e0; margin: 6px 0 4px; }
+.skeleton-divider { height: 2px; background: #e0e0e0; margin: 8px 0; }
+.skeleton-price { height: 22px; width: 25%; }
+.skeleton-actions { display: flex; gap: 16px; }
+.skeleton-btn { flex: 1 1 0; height: 42px; border-radius: 8px; background: linear-gradient(90deg, #eee 25%, #f5f5f5 37%, #eee 63%); background-size: 400% 100%; animation: shimmer 1.4s ease infinite; }
+.skeleton-btn.outline { box-shadow: inset 0 0 0 3px #e0e0e0; background: #fafafa; animation: none; }
+
+@keyframes shimmer { 0% { background-position: 100% 0 } 100% { background-position: 0 0 } }
 
 @media (max-width: 768px) {
   .actions {

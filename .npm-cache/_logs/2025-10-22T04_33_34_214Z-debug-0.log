@@ -1,0 +1,74 @@
+0 verbose cli /Users/rama/.local/share/mise/installs/node/24.8.0/bin/node /Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@11.6.0
+2 info using node@v24.8.0
+3 silly config load:file:/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/rama/projects/rakamin/TASK_5/ecommerce/.npmrc
+5 silly config load:file:/Users/rama/.npmrc
+6 silly config load:file:/Users/rama/.local/share/mise/installs/node/24.8.0/etc/npmrc
+7 verbose title npm i vue-content-loader
+8 verbose argv "i" "vue-content-loader"
+9 verbose logfile logs-max:10 dir:/Users/rama/projects/rakamin/TASK_5/ecommerce/.npm-cache/_logs/2025-10-22T04_33_34_214Z-
+10 verbose logfile /Users/rama/projects/rakamin/TASK_5/ecommerce/.npm-cache/_logs/2025-10-22T04_33_34_214Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 silly idealTree buildDeps
+14 silly fetch manifest vue-content-loader@*
+15 silly packumentCache full:https://registry.npmjs.org/vue-content-loader cache-miss
+16 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+17 http fetch GET 200 https://registry.npmjs.org/vue-content-loader 162ms (cache miss)
+18 silly packumentCache full:https://registry.npmjs.org/vue-content-loader set size:undefined disposed:false
+19 silly fetch manifest vue@^2.7.16
+20 silly packumentCache full:https://registry.npmjs.org/vue cache-miss
+21 http fetch GET 200 https://registry.npmjs.org/npm 388ms
+22 http fetch GET 200 https://registry.npmjs.org/vue 118ms (cache miss)
+23 silly packumentCache full:https://registry.npmjs.org/vue set size:undefined disposed:false
+24 silly fetch manifest vue@^3
+25 silly packumentCache full:https://registry.npmjs.org/vue cache-miss
+26 http cache https://registry.npmjs.org/vue 7ms (cache hit)
+27 silly packumentCache full:https://registry.npmjs.org/vue set size:1938500 disposed:false
+28 verbose stack Error: unable to resolve dependency tree
+28 verbose stack     at #failPeerConflict (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1407:25)
+28 verbose stack     at #loadPeerSet (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1373:33)
+28 verbose stack     at async #buildDepStep (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:917:11)
+28 verbose stack     at async Arborist.buildIdealTree (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:182:7)
+28 verbose stack     at async Promise.all (index 1)
+28 verbose stack     at async Arborist.reify (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:126:5)
+28 verbose stack     at async Install.exec (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/lib/commands/install.js:150:5)
+28 verbose stack     at async Npm.exec (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/lib/npm.js:208:9)
+28 verbose stack     at async module.exports (/Users/rama/.local/share/mise/installs/node/24.8.0/lib/node_modules/npm/lib/cli/entry.js:67:5)
+29 error code ERESOLVE
+30 error ERESOLVE unable to resolve dependency tree
+31 error
+32 error While resolving: ecommerce@1.0.0
+32 error Found: vue@2.7.16
+32 error node_modules/vue
+32 error   vue@"^2.7.16" from the root project
+32 error
+32 error Could not resolve dependency:
+32 error peer vue@"^3" from vue-content-loader@2.0.1
+32 error node_modules/vue-content-loader
+32 error   vue-content-loader@"*" from the root project
+32 error
+32 error Fix the upstream dependency conflict, or retry
+32 error this command with --force or --legacy-peer-deps
+32 error to accept an incorrect (and potentially broken) dependency resolution.
+33 error
+33 error
+33 error For a full report see:
+33 error /Users/rama/projects/rakamin/TASK_5/ecommerce/.npm-cache/_logs/2025-10-22T04_33_34_214Z-eresolve-report.txt
+34 silly unfinished npm timer reify 1761107614489
+35 silly unfinished npm timer reify:loadTrees 1761107614490
+36 silly unfinished npm timer idealTree:buildDeps 1761107614637
+37 silly unfinished npm timer idealTree:#root 1761107614639
+38 verbose cwd /Users/rama/projects/rakamin/TASK_5/ecommerce
+39 verbose os Darwin 24.6.0
+40 verbose node v24.8.0
+41 verbose npm  v11.6.0
+42 notice
+42 notice New patch version of npm available! 11.6.0 -> 11.6.2
+42 notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+42 notice To update run: npm install -g npm@11.6.2
+42 notice  { force: true, Symbol(proc-log.meta): true }
+43 verbose exit 1
+44 verbose code 1
+45 error A complete log of this run can be found in: /Users/rama/projects/rakamin/TASK_5/ecommerce/.npm-cache/_logs/2025-10-22T04_33_34_214Z-debug-0.log

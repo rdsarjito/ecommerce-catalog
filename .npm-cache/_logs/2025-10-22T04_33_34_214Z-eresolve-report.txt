@@ -1,0 +1,18 @@
+'Log files:
+/Users/rama/projects/rakamin/TASK_5/ecommerce/.npm-cache/_logs/2025-10-22T04_33_34_214Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: ecommerce@1.0.0
+Found: vue@2.7.16
+node_modules/vue
+  vue@"^2.7.16" from the root project
+
+Could not resolve dependency:
+peer vue@"^3" from vue-content-loader@2.0.1
+node_modules/vue-content-loader
+  vue-content-loader@"*" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.
