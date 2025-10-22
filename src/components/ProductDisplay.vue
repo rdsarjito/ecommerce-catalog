@@ -37,6 +37,7 @@
 
         <template v-else>
           <div style="text-align:center; padding:40px 0; color:#999">
+            <img class="unavailable-illustration" :src="sadFace" alt="Unavailable illustration" />
             <h3>This product is unavailable to show</h3>
             <div class="actions" style="justify-content:center">
               <button class="btn secondary" @click="nextProduct" :disabled="isLoading">Next Product</button>
@@ -52,11 +53,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import sadFace from '@/assets/sad-face.png'
 import { useProductStore } from '@/stores/product'
 import { mapState, mapGetters, mapActions } from 'pinia'
 
 export default Vue.extend({
   name: 'ProductDisplay',
+  data() {
+    return { sadFace }
+  },
   computed: {
     ...mapState(useProductStore, ['currentId', 'product', 'isLoading', 'error']),
     ...mapGetters(useProductStore, ['pageClass'])
@@ -64,40 +69,34 @@ export default Vue.extend({
   methods: {
     ...mapActions(useProductStore, ['loadProduct', 'nextProduct'])
   },
-  mounted() {
-    // no-op on mount; fetch happens on Next button
-  }
+  mounted() {}
 })
 </script>
 
 <style scoped>
-/* Layout tightening for product card without changing structure/logic */
 .product-info {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* tighter vertical rhythm */
+  gap: 12px;
   height: 100%;
 }
 
-/* Keep description compact and scrollable if too long */
 .product-info p {
   margin: 0;
-  max-height: 240px; /* limit height; adjust as needed for design */
+  max-height: 240px;
   overflow-y: auto;
 }
 
-/* Modern subtle separators just under text blocks */
 .rule,
 .divider {
   height: 1px;
-  background-color: #e0e0e0; /* thin grey */
+  background-color: #e0e0e0;
   width: 100%;
-  align-self: stretch; /* fit column width only */
+  align-self: stretch;
 }
 .rule { margin: -12px 0 12px 0; }
-.divider { margin: 0px 0px; }
+.divider { margin: 0 0; }
 
-/* Pin price + actions to bottom of the card area */
 .price-row {
   margin-top: auto;
   display: flex;
@@ -105,7 +104,6 @@ export default Vue.extend({
   gap: 12px;
 }
 
-/* Keep buttons aligned horizontally and responsive */
 .actions {
   display: flex;
   gap: 16px;
@@ -120,19 +118,17 @@ export default Vue.extend({
   }
 }
 
-/* Unavailable title typography (Inter Regular 20px) */
 .page-unavailable .card h3 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   font-size: 20px;
-  line-height: 1; /* 100% */
+  line-height: 1;
   letter-spacing: 0;
   color: #000;
   margin: 0;
 }
 
-/* Unavailable view: Next Product button specs */
 .page-unavailable .actions { justify-content: center; }
 .page-unavailable .actions .btn.secondary {
   width: 465px;
@@ -150,10 +146,43 @@ export default Vue.extend({
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
   font-size: 20px;
-  line-height: 1; /* 100% */
+  line-height: 1;
   letter-spacing: 0;
 }
 
-/* Unavailable background illustration behind text/button */
-/* sad-face illustration removed per request */
+.page-unavailable .card > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.unavailable-illustration {
+  position: absolute;
+  left: 56.5%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* image scales to full card width */
+  height: auto; /* keep aspect ratio */
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 2;
+}
+.page-unavailable .card h3,
+.page-unavailable .actions {
+  position: relative;
+  z-index: 1;
+}
+
+.page-unavailable .card {
+  min-height: 600px;
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 </style>
